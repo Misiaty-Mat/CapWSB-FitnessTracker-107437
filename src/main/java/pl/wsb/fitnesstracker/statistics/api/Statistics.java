@@ -2,16 +2,15 @@ package pl.wsb.fitnesstracker.statistics.api;
 
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
+import pl.wsb.fitnesstracker.user.api.User;
 
 @Entity
 @Table(name = "Statistics")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString
+@AllArgsConstructor
 public class Statistics {
 
     @Id
@@ -27,6 +26,9 @@ public class Statistics {
 
     @Column(name = "total_calories_burned")
     private int totalCaloriesBurned;
+
+    @ManyToOne
+    private User user;
 
     public Statistics(int totalTrainings, double totalDistance, int totalCaloriesBurned) {
         this.totalTrainings = totalTrainings;
