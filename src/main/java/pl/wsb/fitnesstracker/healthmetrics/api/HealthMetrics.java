@@ -20,18 +20,18 @@ public class HealthMetrics {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
+    @OneToOne(optional = false)
     private User user;
 
     @Column(nullable = false)
     private LocalDate date;
 
     @Column
-    private Double weight;
+    private double weight;
 
     @Column
-    private Double height;
+    private double height;
 
     @Column(name = "hearth_rate")
-    private Double hearthRate;
+    private String hearthRate;
 }

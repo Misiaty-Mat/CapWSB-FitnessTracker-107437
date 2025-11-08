@@ -15,7 +15,6 @@ public class Statistics {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Nullable
     private Long id;
 
     @Column(name = "total_trainings", nullable = false)
@@ -27,7 +26,7 @@ public class Statistics {
     @Column(name = "total_calories_burned")
     private int totalCaloriesBurned;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     private User user;
 
     public Statistics(int totalTrainings, double totalDistance, int totalCaloriesBurned) {
