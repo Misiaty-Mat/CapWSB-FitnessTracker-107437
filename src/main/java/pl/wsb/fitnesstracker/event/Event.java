@@ -16,7 +16,9 @@ import java.util.List;
 public class Event {
 
     @Id
-    private int id;
+    @Getter
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column
     private String name;
@@ -38,4 +40,8 @@ public class Event {
 
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
     private List<UserEvent> userEvents;
+
+    public Long getId() {
+        return this.id;
+    }
 }

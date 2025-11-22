@@ -15,7 +15,9 @@ import java.time.LocalDate;
 public class WorkoutSession {
 
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @ManyToOne(optional = false)
     private Training training;
 

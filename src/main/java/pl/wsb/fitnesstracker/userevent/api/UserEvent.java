@@ -14,6 +14,7 @@ import pl.wsb.fitnesstracker.user.api.User;
 public class UserEvent {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column
