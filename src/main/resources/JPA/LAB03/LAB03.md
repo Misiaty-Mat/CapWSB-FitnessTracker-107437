@@ -17,7 +17,7 @@ Laboratorium III - Relacje w JPA - stan na 22.11.2025 11:00
    dodatkowymi atrybutami).
    Sugeruję zrobić relację @ManyToOne z Userem, oraz @ManyToOne z Eventem.
 
-![](db_schema.png)
+![](../db_schema.png)
 
 4. Wprowadzone zmiany prześlij na swoje repozytorium. Testy powinny poprawnie się wykonać na platformie
    Github.

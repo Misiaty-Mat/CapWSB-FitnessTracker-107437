@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import pl.wsb.fitnesstracker.healthmetrics.api.HealthMetrics;
 import pl.wsb.fitnesstracker.statistics.api.Statistics;
+import pl.wsb.fitnesstracker.training.api.Training;
+import pl.wsb.fitnesstracker.userevent.api.UserEvent;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -36,6 +38,12 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Statistics> statistics;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Training> trainings;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<UserEvent> userEvents;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private HealthMetrics healthMetrics;
