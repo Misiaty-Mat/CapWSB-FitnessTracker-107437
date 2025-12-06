@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import pl.wsb.fitnesstracker.user.api.User;
+import pl.wsb.fitnesstracker.user.api.UserDto;
 import pl.wsb.fitnesstracker.user.api.UserProvider;
 import pl.wsb.fitnesstracker.user.api.UserService;
 
@@ -27,6 +28,25 @@ class UserServiceImpl implements UserService, UserProvider {
     }
 
     @Override
+    public void deleteUser(Long id) {
+        userRepository.deleteById(id);
+    }
+
+    @Override
+    public void updateUser(Long id, UserDto user) {
+        userRepository.findById(id)
+                .map(user1 ->
+                        User.builder()
+                                .id(user1.getId())
+                                .email(Optional.ofNullable(user.email()).orElseGet(user1::getEmail))
+                                .firstName(Optional.ofNullable(user.firstName()).orElseGet(user1::getFirstName))
+                                .lastName(Optional.ofNullable(user.lastName()).orElseGet(user1::getLastName))
+                                .birthdate(Optional.ofNullable(user.birthdate()).orElseGet(user1::getBirthdate))
+                                .build()
+                ).ifPresent(userRepository::save);
+    }
+
+    @Override
     public Optional<User> getUser(final Long userId) {
         return userRepository.findById(userId);
     }
@@ -40,5 +60,7 @@ class UserServiceImpl implements UserService, UserProvider {
     public List<User> findAllUsers() {
         return userRepository.findAll();
     }
+
+
 
 }
