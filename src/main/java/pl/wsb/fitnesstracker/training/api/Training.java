@@ -16,6 +16,25 @@ import java.util.Date;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString
 public class Training {
+    public double getAverageSpeed() {
+        return averageSpeed;
+    }
+
+    public double getDistance() {
+        return distance;
+    }
+
+    public ActivityType getActivityType() {
+        return activityType;
+    }
+
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    public Date getStartTime() {
+        return startTime;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -56,4 +75,7 @@ public class Training {
         this.averageSpeed = averageSpeed;
     }
 
+    public User getUser() {
+        return this.user;
+    }
 }
